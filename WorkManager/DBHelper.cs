@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 
 namespace WorkManager
@@ -27,15 +29,16 @@ namespace WorkManager
             }
         }
 
-        public static int InsertProduct(string name, string spec, int price)
+        public static int InsertProduct(string name, string spec, int price,int timePerUnit)
         {
             using (SqlConnection conn = GetConnection())
             {
-                string query = "INSERT INTO Product (ProductName, Specification, UnitPrice) VALUES (@name, @spec, @price)";
+                string query = "INSERT INTO Product (ProductName, Specification, UnitPrice, TimePerUnit) VALUES (@name, @spec, @price,@timePerUnit)";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@name", name);
                 cmd.Parameters.AddWithValue("@spec", spec);
                 cmd.Parameters.AddWithValue("@price", price);
+                cmd.Parameters.AddWithValue("@timePerUnit", timePerUnit);
 
                 conn.Open();
                 return cmd.ExecuteNonQuery();
@@ -56,5 +59,146 @@ namespace WorkManager
                 return cmd.ExecuteNonQuery();
             }
         }
+
+        public static DataTable LoadWorkhistory()
+        {
+            using (SqlConnection conn = GetConnection())
+            {
+                string query = "SELECT WorkerID, Status, TimeStamp FROM WorkHistory";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                return dt;
+
+            }
+        }
+
+        public static int InsertOrder(int workerID, int productID, int quantity, DateTime startTime, DateTime expectedEndtime)
+        {
+            using (SqlConnection conn = GetConnection())
+            {
+                string query = "INSERT INTO WorkOrder (WorkerID,ProductID,Quantity,StartTime,ExpectedEndtime) VALUES (@worker,@productID, @quantity,@startTime,@expectedEndtime)";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@worker", workerID);
+                cmd.Parameters.AddWithValue("@productID", productID);
+                cmd.Parameters.AddWithValue("@quantity", quantity);
+                cmd.Parameters.AddWithValue("@startTime", startTime);
+                cmd.Parameters.AddWithValue("@expectedEndtime", expectedEndtime); 
+                conn.Open();
+                return cmd.ExecuteNonQuery();
+            }
+        }
+
+        public List<string> GetWorkerNames()
+        {
+            List<string> names = new List<string>();
+
+            using (SqlConnection conn = GetConnection())
+            {
+                string query = "SELECT WorkerID, Name FROM Worker";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    int workerID = reader.GetInt32(0);
+                    string workName = reader.GetString(1);
+                    names.Add($"{workerID}. {workName}");
+                }
+            }
+            return names;
+        }
+
+        public List<string> GetProductNames()
+        {
+            List<string> names = new List<string>();
+
+            using (SqlConnection conn = GetConnection())
+            {
+                string query = "SELECT ProductName FROM Product";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    names.Add(reader.GetString(0));
+                }
+            }
+            return names;
+        }
+
+        public string GetProductSpecification(string productName)
+        {
+            using (SqlConnection conn = GetConnection())
+            {
+                string query = "SELECT Specification FROM Product WHERE ProductName = @name";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@name", productName);
+
+                conn.Open();
+                object result = cmd.ExecuteScalar();  // 첫 번째 행 첫 번째 열 값 반환
+                return result != null ? result.ToString() : string.Empty;
+            }
+        }
+
+        public List<string> GetProductNamesWithSpecification()
+        {
+            List<string> productList = new List<string>();
+
+            using (SqlConnection conn = GetConnection())
+            {
+                string query = "SELECT ProductID, ProductName, Specification FROM Product";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    int productID = reader.GetInt32(0);
+                    string productName = reader.GetString(1);
+                    string specification = reader.GetString(2);
+                    // 상품명과 규격을 결합하여 하나의 문자열로 만듭니다.
+                    productList.Add($"{productID}. {productName} ({specification})");
+                }
+            }
+            return productList;
+        }
+
+        // DBHelper.cs
+        // ...
+        public int GetProductTime(int productID, int quantity)
+        {
+            using (SqlConnection conn = GetConnection())
+            {
+                string query = "SELECT TimeUnit, TimePerUnit FROM Product WHERE ProductId = @productID";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("productID", productID);
+
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                int timePerUnit = 0;
+                int shiftedTime = 0;
+                string timeUnit = ""; // 변수 초기화
+
+                if (reader.Read())
+                {
+                    timeUnit = reader.GetString(0);
+                    timePerUnit = reader.GetInt32(1);
+
+                    if (timeUnit == "minute")
+                    {
+                        shiftedTime = timePerUnit * 60;
+                    }
+                    else if (timeUnit == "hour")
+                    {
+                        shiftedTime = timePerUnit * 3600;
+                    }
+                }
+
+                return shiftedTime * quantity;
+            }
+        }
+
+        // ...
     }
 }

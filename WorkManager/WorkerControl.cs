@@ -11,9 +11,9 @@ using DBHelper = WorkManager.DBHelper;
 
 namespace WorkManager
 {
-    public partial class Worker : Form
+    public partial class WorkerControl : UserControl
     {
-        public Worker()
+        public WorkerControl()
         {
             InitializeComponent();
         }

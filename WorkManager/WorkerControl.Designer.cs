@@ -1,6 +1,6 @@
 ﻿namespace WorkManager
 {
-    partial class Worker
+    partial class WorkerControl
     {
         /// <summary>
         /// Required designer variable.
@@ -39,9 +39,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(377, 64);
+            this.label1.Font = new System.Drawing.Font("굴림", 15F);
+            this.label1.Location = new System.Drawing.Point(311, 66);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 15);
+            this.label1.Size = new System.Drawing.Size(87, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "작업자";
             // 
@@ -92,19 +93,19 @@
             this.Worker_submit.UseVisualStyleBackColor = true;
             this.Worker_submit.Click += new System.EventHandler(this.Worker_submit_Click);
             // 
-            // Worker
+            // WorkerControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.Controls.Add(this.Worker_submit);
             this.Controls.Add(this.boxJobTitle);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Worker";
-            this.Text = "Worker";
+            this.Name = "WorkerControl";
+            this.Size = new System.Drawing.Size(800, 450);
             this.Load += new System.EventHandler(this.Worker_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

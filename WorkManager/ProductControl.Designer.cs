@@ -1,6 +1,6 @@
 ﻿namespace WorkManager
 {
-    partial class product
+    partial class ProductControl
     {
         /// <summary>
         /// 필수 디자이너 변수입니다.
@@ -37,18 +37,18 @@
             this.txtUnitPrice = new System.Windows.Forms.TextBox();
             this.product_submit = new System.Windows.Forms.Button();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.boxTimeUnit = new System.Windows.Forms.ComboBox();
+            this.txtTimePerUnit = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
-            this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("굴림", 15F);
-            this.label1.Location = new System.Drawing.Point(318, 35);
+            this.label1.Location = new System.Drawing.Point(401, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(112, 25);
             this.label1.TabIndex = 0;
@@ -83,21 +83,21 @@
             // 
             // txtProductName
             // 
-            this.txtProductName.Location = new System.Drawing.Point(323, 104);
+            this.txtProductName.Location = new System.Drawing.Point(406, 104);
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.Size = new System.Drawing.Size(100, 25);
             this.txtProductName.TabIndex = 4;
             // 
             // txtSpecification
             // 
-            this.txtSpecification.Location = new System.Drawing.Point(323, 164);
+            this.txtSpecification.Location = new System.Drawing.Point(406, 164);
             this.txtSpecification.Name = "txtSpecification";
             this.txtSpecification.Size = new System.Drawing.Size(100, 25);
             this.txtSpecification.TabIndex = 5;
             // 
             // txtUnitPrice
             // 
-            this.txtUnitPrice.Location = new System.Drawing.Point(323, 229);
+            this.txtUnitPrice.Location = new System.Drawing.Point(406, 229);
             this.txtUnitPrice.Name = "txtUnitPrice";
             this.txtUnitPrice.Size = new System.Drawing.Size(100, 25);
             this.txtUnitPrice.TabIndex = 6;
@@ -106,7 +106,7 @@
             // 
             this.product_submit.BackColor = System.Drawing.SystemColors.ControlLight;
             this.product_submit.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.product_submit.Location = new System.Drawing.Point(506, 229);
+            this.product_submit.Location = new System.Drawing.Point(589, 229);
             this.product_submit.Name = "product_submit";
             this.product_submit.Size = new System.Drawing.Size(75, 23);
             this.product_submit.TabIndex = 7;
@@ -119,42 +119,52 @@
             this.fileSystemWatcher1.EnableRaisingEvents = true;
             this.fileSystemWatcher1.SynchronizingObject = this;
             // 
-            // tabControl1
+            // label5
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(13, 13);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(200, 47);
-            this.tabControl1.TabIndex = 8;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(248, 286);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(117, 15);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "제품당 소요시간";
             // 
-            // tabPage1
+            // label6
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(192, 18);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(248, 332);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(102, 15);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "소요시간 단위";
             // 
-            // tabPage2
+            // boxTimeUnit
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(192, 71);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.boxTimeUnit.FormattingEnabled = true;
+            this.boxTimeUnit.Items.AddRange(new object[] {
+            "초",
+            "분",
+            "시간"});
+            this.boxTimeUnit.Location = new System.Drawing.Point(406, 323);
+            this.boxTimeUnit.Name = "boxTimeUnit";
+            this.boxTimeUnit.Size = new System.Drawing.Size(121, 23);
+            this.boxTimeUnit.TabIndex = 10;
             // 
-            // product
+            // txtTimePerUnit
+            // 
+            this.txtTimePerUnit.Location = new System.Drawing.Point(406, 276);
+            this.txtTimePerUnit.Name = "txtTimePerUnit";
+            this.txtTimePerUnit.Size = new System.Drawing.Size(100, 25);
+            this.txtTimePerUnit.TabIndex = 11;
+            // 
+            // ProductControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(783, 400);
-            this.Controls.Add(this.tabControl1);
+            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.Controls.Add(this.txtTimePerUnit);
+            this.Controls.Add(this.boxTimeUnit);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.product_submit);
             this.Controls.Add(this.txtUnitPrice);
             this.Controls.Add(this.txtSpecification);
@@ -163,10 +173,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "product";
-            this.Text = "상품등록";
+            this.Name = "ProductControl";
+            this.Size = new System.Drawing.Size(783, 400);
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
-            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -183,9 +192,10 @@
         private System.Windows.Forms.TextBox txtUnitPrice;
         private System.Windows.Forms.Button product_submit;
         private System.IO.FileSystemWatcher fileSystemWatcher1;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TextBox txtTimePerUnit;
+        private System.Windows.Forms.ComboBox boxTimeUnit;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
     }
 }
 
