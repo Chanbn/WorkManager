@@ -29,7 +29,7 @@ namespace WorkManager
             }
         }
 
-        public static int InsertProduct(string name, string spec, int price,int timePerUnit)
+        public static int InsertProduct(string name, string spec, int price, int timePerUnit)
         {
             using (SqlConnection conn = GetConnection())
             {
@@ -83,7 +83,7 @@ namespace WorkManager
                 cmd.Parameters.AddWithValue("@productID", productID);
                 cmd.Parameters.AddWithValue("@quantity", quantity);
                 cmd.Parameters.AddWithValue("@startTime", startTime);
-                cmd.Parameters.AddWithValue("@expectedEndtime", expectedEndtime); 
+                cmd.Parameters.AddWithValue("@expectedEndtime", expectedEndtime);
                 conn.Open();
                 return cmd.ExecuteNonQuery();
             }
@@ -200,5 +200,46 @@ namespace WorkManager
         }
 
         // ...
+
+        public string GetUserRoleFromDataBase(string userName, string password)
+        {
+            using (SqlConnection conn = GetConnection())
+            {
+                string query = "SELECT Role FROM Users WHERE UserName = @userName AND Password = @password";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@userName", userName);
+                cmd.Parameters.AddWithValue("@password", password);
+                conn.Open();
+                object result = cmd.ExecuteScalar();
+                return result != null ? result.ToString() : null;
+            }
+        }
+    
+
+    public User getUser(string username, string pssword)
+        {
+            using (SqlConnection conn = GetConnection())
+            {
+                string query = "SELECT UserID, UserName, Password, Role FROM Users WHERE UserName = @username AND Password = @pssword";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@username", username);
+                cmd.Parameters.AddWithValue("@pssword", pssword);
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    int userID = reader.GetInt32(0);
+                    string userName = reader.GetString(1);
+                    string password = reader.GetString(2);
+                    string role = reader.GetString(3);
+                    return new User(userID, userName, password, role);
+                }
+                else
+                {
+                    return null; // 사용자 정보가 없을 경우 null 반환
+                }
+            }
+
+        }
     }
 }
