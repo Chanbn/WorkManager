@@ -10,21 +10,18 @@ using System.Windows.Forms;
 
 namespace WorkManager
 {
-    public partial class MainForm_Worker : Form
+    public partial class MainForm_TeamLeader : Form
     {
-        public MainForm_Worker()
+        public MainForm_TeamLeader()
         {
             InitializeComponent();
             string user = CurrentSession.UserName;
-            label_Username1.Text = $"사용자: {user}";
+
             label_Username2.Text = $"사용자: {user}";
             label_Username3.Text = $"사용자: {user}";
             label_Username4.Text = $"사용자: {user}";
 
-            //작업자 탭에 WorkerControl 삽입
-            WorkerControl workerControl = new WorkerControl();
-            workerControl.Dock = DockStyle.Fill;
-            tabPageWorker.Controls.Add(workerControl);
+
 
             //제품 탭에 ProductControl 삽입
             ProductControl productControl = new ProductControl();

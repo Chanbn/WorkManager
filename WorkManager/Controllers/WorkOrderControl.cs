@@ -18,10 +18,16 @@ namespace WorkManager
         private int productID;
         private DateTime expectedEndtime;
         private DateTime startTime;
-
+        private ProductDto productDto;
+        private string userName;
         public WorkOrderControl()
         {
             InitializeComponent();
+            panel1.AutoSize = false;
+            panel1.Left = (this.ClientSize.Width - panel1.Width) / 2;
+            panel1.Top = (this.ClientSize.Height - panel1.Height) / 2;
+            panel1.BackColor = Color.WhiteSmoke; // 배경색도 깔끔하게
+            this.AutoScroll = true;
             this.Load += WorkOrderControl_Load;
             this.txtQuantity.Leave += txtQuantity_Leave; // Leave 이벤트 핸들러 연결
 
@@ -31,11 +37,19 @@ namespace WorkManager
         // Load 이벤트에서 콤보박스 데이터 채움
         private void WorkOrderControl_Load(object sender, EventArgs e)
         {
-            var workerNames = db.GetWorkerNames();
-            boxWorker.Items.Clear();
-            boxWorker.Items.AddRange(workerNames.ToArray());
+            //var workerNames = db.GetWorkerNames();
+            var users = db.getAllUser();
+            List<string> userNames = users.Select(u=>u.UserName+"."+u.Name).ToList();
 
-            var productsWithSpec = db.GetProductNamesWithSpecification();
+            boxWorker.Items.Clear();
+            boxWorker.Items.AddRange(userNames.ToArray());
+
+            //var productsWithSpec = db.GetProductNamesWithSpecification();
+            var products = db.getAllProduct();
+
+            List<string> productsWithSpec = products.Select(p => $"{p.ProductID}. {p.ProductName} ({p.Specification})").ToList();
+
+
             boxProduct.Items.Clear();
             boxProduct.Items.AddRange(productsWithSpec.ToArray());
         }
@@ -74,10 +88,10 @@ namespace WorkManager
 
             // DB에서 시간 정보를 가져와 expectedEndtime을 계산하고 클래스 변수에 저장합니다.
             // GetProductTime 메서드 로직은 아래에서 수정합니다.
-            int totalTime = db.GetProductTime(this.productID, quantity);
+            productDto = db.GetProduct(this.productID);
+            int totalTime = productDto.CalculateTotalTime(quantity);
             this.startTime = DateTime.Now; // 현재 시간을 시작 시간으로 설정
             this.expectedEndtime = startTime.AddSeconds(totalTime); // 예상 완료 시간을 계산
-            MessageBox.Show($"예상 완료 시간: {this.expectedEndtime.ToString("yyyy-MM-dd HH:mm:ss")}");
             txtExpectedTime.Text = this.expectedEndtime.ToString("yyyy-MM-dd HH:mm:ss");
 
             // 사용자에게 예상 완료 시간을 보여주는 코드 추가 가능
@@ -103,12 +117,17 @@ namespace WorkManager
                 return;
             }
 
-            int workerID = int.Parse(boxWorker.SelectedItem.ToString().Split('.')[0]);
+            userName = boxWorker.SelectedItem.ToString().Split('.')[0];
             // productID와 expectedEndtime은 이미 Leave 이벤트에서 계산되었으므로 재사용
  
-            DBHelper.InsertOrder(workerID, this.productID, quantity,this.startTime, this.expectedEndtime);
+            DBHelper.InsertOrder(userName, this.productID, quantity,this.startTime, this.expectedEndtime);
 
             MessageBox.Show("작업지시가 등록되었습니다.");
+        }
+
+        private void boxWorker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //workerID = int.Parse(boxWorker.SelectedItem.ToString());
         }
     }
 

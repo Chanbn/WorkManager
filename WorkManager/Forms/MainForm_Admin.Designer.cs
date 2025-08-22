@@ -1,6 +1,6 @@
 ﻿namespace WorkManager
 {
-    partial class MainForm_TeamLeader
+    partial class MainForm_Admin
     {
         /// <summary>
         /// Required designer variable.
@@ -31,129 +31,130 @@
             this.tabPageWorkOrder = new System.Windows.Forms.TabPage();
             this.label_Username4 = new System.Windows.Forms.Label();
             this.tabPage = new System.Windows.Forms.TabControl();
-            this.tabPageWorker = new System.Windows.Forms.TabPage();
-            this.label_Username1 = new System.Windows.Forms.Label();
-            this.tabPageProduct = new System.Windows.Forms.TabPage();
-            this.label_Username2 = new System.Windows.Forms.Label();
             this.tabPageHistory = new System.Windows.Forms.TabPage();
             this.label_Username3 = new System.Windows.Forms.Label();
+            this.tabPageProduct = new System.Windows.Forms.TabPage();
+            this.label_Username2 = new System.Windows.Forms.Label();
+            this.tabPageWorker = new System.Windows.Forms.TabPage();
+            this.label_Username1 = new System.Windows.Forms.Label();
             this.tabPageWorkOrder.SuspendLayout();
             this.tabPage.SuspendLayout();
-            this.tabPageWorker.SuspendLayout();
-            this.tabPageProduct.SuspendLayout();
             this.tabPageHistory.SuspendLayout();
+            this.tabPageProduct.SuspendLayout();
+            this.tabPageWorker.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPageWorkOrder
             // 
+            this.tabPageWorkOrder.BackColor = System.Drawing.Color.LightGray;
             this.tabPageWorkOrder.Controls.Add(this.label_Username4);
-            this.tabPageWorkOrder.Location = new System.Drawing.Point(4, 25);
+            this.tabPageWorkOrder.Location = new System.Drawing.Point(4, 48);
             this.tabPageWorkOrder.Name = "tabPageWorkOrder";
             this.tabPageWorkOrder.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageWorkOrder.Size = new System.Drawing.Size(792, 421);
+            this.tabPageWorkOrder.Size = new System.Drawing.Size(925, 504);
             this.tabPageWorkOrder.TabIndex = 3;
             this.tabPageWorkOrder.Text = "작업지시";
-            this.tabPageWorkOrder.UseVisualStyleBackColor = true;
             // 
             // label_Username4
             // 
             this.label_Username4.AutoSize = true;
             this.label_Username4.Location = new System.Drawing.Point(614, 4);
             this.label_Username4.Name = "label_Username4";
-            this.label_Username4.Size = new System.Drawing.Size(45, 15);
+            this.label_Username4.Size = new System.Drawing.Size(99, 40);
             this.label_Username4.TabIndex = 0;
             this.label_Username4.Text = "label1";
             // 
             // tabPage
             // 
-            this.tabPage.Controls.Add(this.tabPageWorker);
-            this.tabPage.Controls.Add(this.tabPageProduct);
             this.tabPage.Controls.Add(this.tabPageHistory);
             this.tabPage.Controls.Add(this.tabPageWorkOrder);
+            this.tabPage.Controls.Add(this.tabPageProduct);
+            this.tabPage.Controls.Add(this.tabPageWorker);
             this.tabPage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabPage.Font = new System.Drawing.Font("Noto Serif KR", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage.Location = new System.Drawing.Point(0, 0);
             this.tabPage.Name = "tabPage";
             this.tabPage.SelectedIndex = 0;
-            this.tabPage.Size = new System.Drawing.Size(800, 450);
+            this.tabPage.Size = new System.Drawing.Size(933, 556);
             this.tabPage.TabIndex = 1;
             // 
-            // tabPageWorker
+            // tabPageHistory
             // 
-            this.tabPageWorker.Controls.Add(this.label_Username1);
-            this.tabPageWorker.Location = new System.Drawing.Point(4, 25);
-            this.tabPageWorker.Name = "tabPageWorker";
-            this.tabPageWorker.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageWorker.Size = new System.Drawing.Size(792, 421);
-            this.tabPageWorker.TabIndex = 0;
-            this.tabPageWorker.Text = "작업자";
-            this.tabPageWorker.UseVisualStyleBackColor = true;
+            this.tabPageHistory.BackColor = System.Drawing.Color.LightGray;
+            this.tabPageHistory.Controls.Add(this.label_Username3);
+            this.tabPageHistory.Location = new System.Drawing.Point(4, 48);
+            this.tabPageHistory.Name = "tabPageHistory";
+            this.tabPageHistory.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageHistory.Size = new System.Drawing.Size(925, 504);
+            this.tabPageHistory.TabIndex = 2;
+            this.tabPageHistory.Text = "작업이력";
             // 
-            // label_Username1
+            // label_Username3
             // 
-            this.label_Username1.AutoSize = true;
-            this.label_Username1.Location = new System.Drawing.Point(607, 3);
-            this.label_Username1.Name = "label_Username1";
-            this.label_Username1.Size = new System.Drawing.Size(45, 15);
-            this.label_Username1.TabIndex = 1;
-            this.label_Username1.Text = "label1";
+            this.label_Username3.AutoSize = true;
+            this.label_Username3.Location = new System.Drawing.Point(607, 3);
+            this.label_Username3.Name = "label_Username3";
+            this.label_Username3.Size = new System.Drawing.Size(99, 40);
+            this.label_Username3.TabIndex = 1;
+            this.label_Username3.Text = "label1";
             // 
             // tabPageProduct
             // 
+            this.tabPageProduct.BackColor = System.Drawing.Color.LightGray;
             this.tabPageProduct.Controls.Add(this.label_Username2);
-            this.tabPageProduct.Location = new System.Drawing.Point(4, 25);
+            this.tabPageProduct.Location = new System.Drawing.Point(4, 48);
             this.tabPageProduct.Name = "tabPageProduct";
             this.tabPageProduct.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageProduct.Size = new System.Drawing.Size(792, 421);
+            this.tabPageProduct.Size = new System.Drawing.Size(925, 504);
             this.tabPageProduct.TabIndex = 1;
             this.tabPageProduct.Text = "상품";
-            this.tabPageProduct.UseVisualStyleBackColor = true;
             // 
             // label_Username2
             // 
             this.label_Username2.AutoSize = true;
             this.label_Username2.Location = new System.Drawing.Point(627, 3);
             this.label_Username2.Name = "label_Username2";
-            this.label_Username2.Size = new System.Drawing.Size(45, 15);
+            this.label_Username2.Size = new System.Drawing.Size(99, 40);
             this.label_Username2.TabIndex = 1;
             this.label_Username2.Text = "label1";
             // 
-            // tabPageHistory
+            // tabPageWorker
             // 
-            this.tabPageHistory.Controls.Add(this.label_Username3);
-            this.tabPageHistory.Location = new System.Drawing.Point(4, 25);
-            this.tabPageHistory.Name = "tabPageHistory";
-            this.tabPageHistory.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageHistory.Size = new System.Drawing.Size(792, 421);
-            this.tabPageHistory.TabIndex = 2;
-            this.tabPageHistory.Text = "작업이력";
-            this.tabPageHistory.UseVisualStyleBackColor = true;
+            this.tabPageWorker.BackColor = System.Drawing.Color.LightGray;
+            this.tabPageWorker.Controls.Add(this.label_Username1);
+            this.tabPageWorker.Location = new System.Drawing.Point(4, 48);
+            this.tabPageWorker.Name = "tabPageWorker";
+            this.tabPageWorker.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageWorker.Size = new System.Drawing.Size(1119, 460);
+            this.tabPageWorker.TabIndex = 0;
+            this.tabPageWorker.Text = "작업자";
             // 
-            // label_Username3
+            // label_Username1
             // 
-            this.label_Username3.AutoSize = true;
-            this.label_Username3.Location = new System.Drawing.Point(627, 3);
-            this.label_Username3.Name = "label_Username3";
-            this.label_Username3.Size = new System.Drawing.Size(45, 15);
-            this.label_Username3.TabIndex = 1;
-            this.label_Username3.Text = "label1";
+            this.label_Username1.AutoSize = true;
+            this.label_Username1.Location = new System.Drawing.Point(607, 3);
+            this.label_Username1.Name = "label_Username1";
+            this.label_Username1.Size = new System.Drawing.Size(99, 40);
+            this.label_Username1.TabIndex = 1;
+            this.label_Username1.Text = "label1";
             // 
-            // MainForm_TeamLeader
+            // MainForm_Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(933, 556);
             this.Controls.Add(this.tabPage);
-            this.Name = "MainForm_TeamLeader";
-            this.Text = "MainForm_TeamLeader";
+            this.Name = "MainForm_Admin";
+            this.Text = "MainForm_Admin";
             this.tabPageWorkOrder.ResumeLayout(false);
             this.tabPageWorkOrder.PerformLayout();
             this.tabPage.ResumeLayout(false);
-            this.tabPageWorker.ResumeLayout(false);
-            this.tabPageWorker.PerformLayout();
-            this.tabPageProduct.ResumeLayout(false);
-            this.tabPageProduct.PerformLayout();
             this.tabPageHistory.ResumeLayout(false);
             this.tabPageHistory.PerformLayout();
+            this.tabPageProduct.ResumeLayout(false);
+            this.tabPageProduct.PerformLayout();
+            this.tabPageWorker.ResumeLayout(false);
+            this.tabPageWorker.PerformLayout();
             this.ResumeLayout(false);
 
         }

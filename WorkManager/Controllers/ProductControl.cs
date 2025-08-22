@@ -16,6 +16,13 @@ namespace WorkManager
         public ProductControl()
         {
             InitializeComponent();
+
+            panel1.AutoSize = false;
+            panel1.Left = (this.ClientSize.Width - panel1.Width) / 2;
+            panel1.Top = (this.ClientSize.Height - panel1.Height) / 2;
+            panel1.BackColor = Color.WhiteSmoke; // 배경색도 깔끔하게
+            this.AutoScroll = true;
+
         }
 
         private void product_submit_Click(object sender, EventArgs e)

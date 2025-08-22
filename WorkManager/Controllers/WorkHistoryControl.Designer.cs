@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.boxWorker = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panelWorker = new System.Windows.Forms.Panel();
             this.panelGrid = new System.Windows.Forms.Panel();
@@ -40,6 +40,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(0, 40);
             this.label2.Name = "label2";
@@ -47,16 +48,19 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "작업자";
             // 
-            // comboBox1
+            // boxWorker
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(79, 32);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 8;
+            this.boxWorker.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.boxWorker.FormattingEnabled = true;
+            this.boxWorker.Location = new System.Drawing.Point(79, 32);
+            this.boxWorker.Name = "boxWorker";
+            this.boxWorker.Size = new System.Drawing.Size(121, 23);
+            this.boxWorker.TabIndex = 8;
+            this.boxWorker.SelectedIndexChanged += new System.EventHandler(this.boxWorker_SelectedIndexChanged);
             // 
             // dataGridView1
             // 
+            this.dataGridView1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(9, 13);
             this.dataGridView1.Name = "dataGridView1";
@@ -67,7 +71,8 @@
             // 
             // panelWorker
             // 
-            this.panelWorker.Controls.Add(this.comboBox1);
+            this.panelWorker.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panelWorker.Controls.Add(this.boxWorker);
             this.panelWorker.Controls.Add(this.label2);
             this.panelWorker.Location = new System.Drawing.Point(3, 26);
             this.panelWorker.Name = "panelWorker";
@@ -76,6 +81,7 @@
             // 
             // panelGrid
             // 
+            this.panelGrid.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelGrid.Controls.Add(this.dataGridView1);
             this.panelGrid.Location = new System.Drawing.Point(0, 108);
             this.panelGrid.Name = "panelGrid";
@@ -100,7 +106,7 @@
 
         #endregion
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox boxWorker;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panelWorker;
         private System.Windows.Forms.Panel panelGrid;
